@@ -1,5 +1,8 @@
+- The tool to track your intention, or just manage some kind of tree structure, with Command Line Interface.
+- This project was started up for my learning the Rust programming language.
+
 # 0.要約 -- abstruct
-- 普段僕はプログラミングでプロダクト制作や課題に取り組む
+- 普段私はプログラミングでプロダクト制作や課題に取り組む
 - しかしその際にサブ目的だけに気を取られ、異様に作業時間が伸びつつも、本来の目的が達成できなくなっていることがある。
 - その様子を可視化するツールが欲しいので、Rustでタスクの生え方の様子を確認するツールを作成する。
 
