@@ -1,24 +1,23 @@
-use chrono::Local;
+use chrono::{Local, DateTime};
 use std::io::Write;
 use std::path::Path;
 use std::fs::File;
-use std::env;
+type MaybeFail = Result<(), Box<dyn std::error::Error>>;
 
-fn main(){
-    println!("{}", time_output());
-    let args = env::args();
+fn main() -> MaybeFail{
+    let row = create_row(Local::now(), "問題");
+    write_file(Path::new("hello.txt"), &row)
+}
+fn create_row(posted: DateTime<Local>, content: &str) -> String{
+    format!(
+        "[{}] :: {}", 
+        posted.format("%Y-%m-%d %H:%M:%S").to_string(),
+        content
+    )
 }
 
-fn time_output() -> String{
-    let now = Local::now();
-    now.format("%Y-%m-%d %H:%M:%S").to_string()
-}
-#[allow(unused)]
-fn write_file()-> Result<(), Box<dyn std::error::Error>>{
-    let path = Path::new("hello.txt");
+fn write_file(path:&Path, data:&str) -> MaybeFail {
     let mut file = File::create(&path)?;
-    let sentence = "タスク";
-    file.write_all(sentence.as_bytes())?;
-    
+    file.write_all(data.as_bytes())?;
     Ok(())
 }
