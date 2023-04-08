@@ -1,8 +1,9 @@
 use chrono::{Local, DateTime};
 use std::io::Write;
-use std::path::Path;
 use std::fs::File;
-type Throwable = Result<(), Box<dyn std::error::Error>>;
+use std::path::Path;
+use std::error::Error;
+type Throwable = Result<(), Box<dyn Error>>;
 
 fn main() -> Throwable{
     let row = create_row(Local::now(), "問題");
